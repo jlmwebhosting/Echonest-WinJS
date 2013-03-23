@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html ng-app="ha">
+<head>
+    <meta charset="utf-8" />
+    <title>HelloAngular</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <link href="/css/default.css" rel="stylesheet" />
+     <script src="js/jquery-1.8.2-win8-1.0.min.js"></script>
+     <script type="text/javascript">
+         jQuery.isUnsafe = true;
+     </script>    
+     <script src="/js/angular.js"></script>
+     <script src="/js/default.js"></script>
+     <script src"/js/app.js"></script>
+</head>
+<body ng-controller="Main">
+    <header aria-label="Header content" role="banner">
+        <h1 class="titlearea win-type-ellipsis">
+            <span class="pagetitle">Song Data Search</span>
+        </h1>
+    </header>
+    <input type="text" name="combined" ng-model="q" placeholder="Radiohead - Karma Police"><input type="button" value="Search!" ng-click="searchSong()" />
+
+    <section class="main">
+        <div class="songlist">
+            <div class="item" ng-repeat="song in results.response.songs">
+                <div class="item-header" ng-click="selectSong(song)">
+                    <div class="item-header">
+                        <h3 ng-class="{selected: song._selected}">{{song.artist_name}} - {{song.title}}</h3>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="item-details" ng-show="thesong.artist_name">
+                <h2>{{thesong.artist_name}} - {{thesong.title}}</h2>
+                <p>From {{thesong.artist_location.location}}</p>
+                <div>
+                    <img src="{{thesong.tracks[0].release_image}}" />
+                </div>
+                <audio ng-model="theplayer" controls src="{{thesong.tracks[0].preview_url}}">
+                </audio>
+
+
+
+                <table style="border: 1px solid black;">
+                    <tr>
+                        <td>Energy Score</td>
+                        <td>{{thesong.audio_summary.energy*100|number:2}}%</td>
+                    </tr>
+                    <tr>
+                        <td>Dance Score</td>
+                        <td>{{thesong.audio_summary.danceability*100|number:2}}%</td>
+                    </tr>
+                    <tr>
+                        <td>Tempo</td>
+                        <td>{{thesong.audio_summary.tempo}} BPM</td>
+                    </tr>
+                    <tr>
+                        <td>Tonality</td>
+                        <td ng-switch on="thesong.audio_summary.mode">
+                            <span ng-switch-when="0">Minor</span>
+                            <span ng-switch-when="1">Major</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Key</td>
+                        <td ng-switch on="thesong.audio_summary.key">
+                            <span ng-switch-when="0">C</span>
+                            <span ng-switch-when="1">C#</span>
+                            <span ng-switch-when="2">D</span>
+                            <span ng-switch-when="3">Eb</span>
+                            <span ng-switch-when="4">E</span>
+                            <span ng-switch-when="5">F</span>
+                            <span ng-switch-when="6">F#</span>
+                            <span ng-switch-when="7">G</span>
+                            <span ng-switch-when="8">A</span>
+                            <span ng-switch-when="0">A#</span>
+                            <span ng-switch-when="10">Bb</span>
+                            <span ng-switch-when="11">b</span>
+                        </td>
+                    </tr>
+                </table>
+                Data Powered By EchoNest
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+</body>
+</html>

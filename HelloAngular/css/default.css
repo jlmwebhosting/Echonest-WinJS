@@ -1,0 +1,51 @@
+﻿body {
+    width:100%;
+    height:100%;
+}
+
+@media screen and (-ms-view-state: fullscreen-landscape) {
+}
+
+@media screen and (-ms-view-state: filled) {
+}
+
+@media screen and (-ms-view-state: snapped) {
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+}
+
+.main {
+    display:-ms-grid;
+    width:100%;
+    height:100%;
+    -ms-grid-columns: 500px 1fr;
+    -ms-grid-rows:1fr;
+}
+
+.songlist {
+    -ms-grid-column:1;
+}
+.details {
+    -ms-grid-column:2;
+}
+
+.item {
+ margin-bottom: .5em; 
+}
+.selected {
+    color:black;
+    background-color:#ddd;
+}
+
+.item-header {
+}
+
+    .item-header .item-image {
+    }
+        .item-header .item-image img {
+            max-width:60px;
+            back
+        }
+    .item-header .item-header {
+    }
